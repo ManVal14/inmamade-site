@@ -9,28 +9,43 @@
             background-color: #121212;
             color: white;
             font-family: Arial, sans-serif;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
         }
-        .lang-switcher {
-            position: absolute;
-            top: 20px;
-            right: 20px;
+        header {
+            padding: 20px;
+            background-color: #1f1f1f;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            margin-left: 20px;
+            color: #00b894;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .lang-switcher button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
         }
         .container {
-            max-width: 600px;
-            margin: 80px auto;
+            max-width: 700px;
+            margin: 40px auto;
             padding: 20px;
             background: #1f1f1f;
             border-radius: 8px;
         }
-        input, textarea {
+        input, textarea, select {
             width: 100%;
             margin: 5px 0 10px;
             padding: 10px;
             border: none;
             border-radius: 4px;
         }
-        button {
+        button[type="submit"] {
             padding: 10px 20px;
             background-color: #00b894;
             color: white;
@@ -45,25 +60,42 @@
     </style>
 </head>
 <body>
-    <div class="lang-switcher">
-        <button onclick="switchLang('lt')">LT</button>
-        <button onclick="switchLang('en')">EN</button>
-    </div>
-    <div class="container">
+    <header>
+        <div>
+            <nav>
+                <a onclick="showPage('about')">Apie</a>
+                <a onclick="showPage('form')">Užklausa</a>
+            </nav>
+        </div>
+        <div class="lang-switcher">
+            <button onclick="switchLang('lt')">LT</button>
+            <button onclick="switchLang('en')">EN</button>
+        </div>
+    </header>
+
+    <div id="about" class="container">
         <h1 id="title">Inmamade</h1>
         <p id="subtitle">Vienas kontaktas. Dešimtys gamyklų. Nulis rūpesčių.</p>
-
-        <h2 id="how">Kaip tai veikia?</h2>
+        <h2 id="about-title">Kaip veikia Inmamade?</h2>
+        <p id="about-desc">
+            Inmamade – tai patikimas partneris verslams, kuriems reikia metalo detalių pagal techninius brėžinius.
+            Mes priimame užklausas, surandame tinkamiausią gamintoją, rūpinamės gamybos eiga ir detalių pristatymu.
+        </p>
         <ol id="steps">
             <li>Atsiųskite brėžinį (.step / .dxf)</li>
             <li>Patiksliname kainą ir terminą</li>
             <li>Pasirūpiname gamyba ir pristatymu</li>
         </ol>
+    </div>
 
-        <h3 id="form-title">Pateikite užklausą</h3>
+    <div id="form" class="container" style="display:none;">
+        <h2 id="form-title">Pateikite užklausą</h2>
+        <p id="form-intro">Užpildykite formą – atsakysime su kaina ir terminu.</p>
         <form>
             <label id="label-drawing">Prisegti brėžinį:</label>
             <input type="file">
+            <label id="label-material">Medžiaga:</label>
+            <input type="text">
             <label id="label-qty">Kiekis:</label>
             <input type="number">
             <label id="label-date">Pageidaujamas terminas:</label>
@@ -72,19 +104,26 @@
             <textarea rows="4"></textarea>
             <button type="submit" id="submit-btn">Siųsti</button>
         </form>
-        <p>Susisiekite: <a href="mailto:mantas@inmamade.com">mantas@inmamade.com</a></p>
-        <p>© 2025 Inmamade MB</p>
+        <p>El. paštas: <a href="mailto:mantas@inmamade.com">mantas@inmamade.com</a></p>
     </div>
 
     <script>
+        function showPage(page) {
+            document.getElementById('about').style.display = (page === 'about') ? 'block' : 'none';
+            document.getElementById('form').style.display = (page === 'form') ? 'block' : 'none';
+        }
+
         function switchLang(lang) {
             if (lang === 'lt') {
                 document.getElementById('title').innerText = 'Inmamade';
                 document.getElementById('subtitle').innerText = 'Vienas kontaktas. Dešimtys gamyklų. Nulis rūpesčių.';
-                document.getElementById('how').innerText = 'Kaip tai veikia?';
+                document.getElementById('about-title').innerText = 'Kaip veikia Inmamade?';
+                document.getElementById('about-desc').innerText = 'Inmamade – tai patikimas partneris verslams, kuriems reikia metalo detalių pagal techninius brėžinius. Mes priimame užklausas, surandame tinkamiausią gamintoją, rūpinamės gamybos eiga ir detalių pristatymu.';
                 document.getElementById('steps').innerHTML = '<li>Atsiųskite brėžinį (.step / .dxf)</li><li>Patiksliname kainą ir terminą</li><li>Pasirūpiname gamyba ir pristatymu</li>';
                 document.getElementById('form-title').innerText = 'Pateikite užklausą';
+                document.getElementById('form-intro').innerText = 'Užpildykite formą – atsakysime su kaina ir terminu.';
                 document.getElementById('label-drawing').innerText = 'Prisegti brėžinį:';
+                document.getElementById('label-material').innerText = 'Medžiaga:';
                 document.getElementById('label-qty').innerText = 'Kiekis:';
                 document.getElementById('label-date').innerText = 'Pageidaujamas terminas:';
                 document.getElementById('label-comment').innerText = 'Komentaras:';
@@ -92,12 +131,15 @@
             } else {
                 document.getElementById('title').innerText = 'Inmamade';
                 document.getElementById('subtitle').innerText = 'One contact. Dozens of factories. Zero hassle.';
-                document.getElementById('how').innerText = 'How it works?';
-                document.getElementById('steps').innerHTML = '<li>Send a drawing (.step / .dxf)</li><li>We confirm price and delivery time</li><li>We arrange production and shipping</li>';
+                document.getElementById('about-title').innerText = 'How does Inmamade work?';
+                document.getElementById('about-desc').innerText = 'Inmamade is a trusted partner for businesses that need metal parts based on technical drawings. We handle the inquiry, find the best factory, oversee production, and ensure timely delivery.';
+                document.getElementById('steps').innerHTML = '<li>Send a drawing (.step / .dxf)</li><li>We confirm price and delivery time</li><li>We arrange production and delivery</li>';
                 document.getElementById('form-title').innerText = 'Submit your request';
+                document.getElementById('form-intro').innerText = 'Fill out the form – we will respond with price and delivery.';
                 document.getElementById('label-drawing').innerText = 'Attach drawing:';
+                document.getElementById('label-material').innerText = 'Material:';
                 document.getElementById('label-qty').innerText = 'Quantity:';
-                document.getElementById('label-date').innerText = 'Desired deadline:';
+                document.getElementById('label-date').innerText = 'Desired delivery date:';
                 document.getElementById('label-comment').innerText = 'Comment:';
                 document.getElementById('submit-btn').innerText = 'Send';
             }
