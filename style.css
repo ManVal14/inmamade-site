@@ -1,61 +1,42 @@
-
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: white;
-    background-color: #111;
-    background-image: url('logo-background.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  font-family: sans-serif;
+  background: #111;
+  color: white;
+  padding: 2rem;
 }
-
-.form-wrapper {
-    background-color: rgba(0, 0, 0, 0.8);
-    max-width: 600px;
-    margin: 60px auto;
-    padding: 30px;
-    border-radius: 10px;
+.logo-bg {
+  background-image: url('logo-background.png');
+  opacity: 0.1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
 }
-
-.logo {
-    display: block;
-    margin: 0 auto 20px;
-    max-width: 120px;
+.form-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(0,0,0,0.8);
+  padding: 2rem;
+  border-radius: 12px;
 }
-
-h1, p {
-    text-align: center;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
 input, textarea, button {
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 1rem;
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: none;
 }
-
-.two-columns {
-    display: flex;
-    gap: 10px;
-}
-
-.two-columns input {
-    flex: 1;
-}
-
 button {
-    background-color: #0057e7;
-    color: white;
-    border: none;
-    cursor: pointer;
+  background-color: #0366d6;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
-
-.note, .confirmation {
-    font-size: 0.9rem;
-    text-align: center;
+.logo {
+  display: block;
+  max-width: 200px;
+  margin: 0 auto 1rem auto;
 }

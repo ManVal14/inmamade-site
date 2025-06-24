@@ -1,42 +1,53 @@
-
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INMAMADE forma</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INMAMADE forma</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const data = new FormData(form);
+      const message = `
+        Vardas, pavardė: ${data.get("vardas")}
+        Įmonės pavadinimas: ${data.get("imone")}
+        El. paštas: ${data.get("email")}
+        Telefonas: ${data.get("telefonas")}
+        Medžiaga: ${data.get("medziaga")}
+        Kiekis: ${data.get("kiekis")}
+        Failo nuoroda: ${data.get("failo_nuoroda")}
+        Pageidaujama įvykdymo data: ${data.get("data")}
+        Pageidaujamas pristatymas: ${data.get("pristatymas") ? "Taip" : "Ne"}
+        Pastabos: ${data.get("pastabos")}
+      `;
+      window.open(`mailto:mantas@inmamade.com?subject=Užklausa dėl gamybos&body=${encodeURIComponent(message)}`);
+    }
+  </script>
 </head>
 <body>
-    <div class="background-logo"></div>
-    <div class="form-wrapper">
-        <img src="logo.png" alt="Inmamade logotipas" class="logo">
-        <h1>Pateikite brėžinius – gaukite pasiūlymą</h1>
-        <p>Užpildykite formą ir gaukite gamybos pasiūlymą jūsų detalėms.</p>
-        <form action="https://formspree.io/f/mdkzwrnv" method="POST" enctype="multipart/form-data">
-            <fieldset>
-                <legend>Užklausa dėl detalių gamybos</legend>
-                <input type="text" name="vardas" placeholder="Vardas, pavardė *" required>
-                <input type="text" name="imone" placeholder="Įmonės pavadinimas">
-                <div class="two-columns">
-                    <input type="email" name="email" placeholder="El. paštas *" required>
-                    <input type="text" name="telefonas" placeholder="Telefonas">
-                </div>
-                <div class="two-columns">
-                    <input type="text" name="medziaga" placeholder="Medžiaga *" required>
-                    <input type="number" name="kiekis" placeholder="Kiekis *" required>
-                </div>
-                <label>Brėžinių failų įkėlimas *
-                    <input type="file" name="file" required>
-                </label>
-                <p class="note">* STEP, DXF, PDF, ZIP – leidžiamas tik vienas failas iki 25MB, siunčiamas tiesiogiai el. paštu</p>
-                <input type="date" name="data" placeholder="Pageidaujama išpildymo data">
-                <label><input type="checkbox" name="pristatymas"> Pageidaujamas pristatymas</label>
-                <textarea name="pastabos" placeholder="Pastabos"></textarea>
-                <button type="submit">Pateikti užklausą</button>
-                <p class="confirmation">Ačiū! Gavome jūsų užklausą. Atsakysime per 24 valandas.</p>
-            </fieldset>
-        </form>
-    </div>
+  <div class="logo-bg"></div>
+  <div class="form-container">
+    <img src="logo.png" alt="Inmamade logotipas" class="logo" />
+    <h1>Pateikite brėžinius – gaukite pasiūlymą</h1>
+    <p>Užpildykite formą ir gaukite gamybos pasiūlymą jūsų detalėms.</p>
+    <form onsubmit="handleSubmit(event)">
+      <input type="text" name="vardas" placeholder="Vardas, pavardė *" required />
+      <input type="text" name="imone" placeholder="Įmonės pavadinimas" />
+      <input type="email" name="email" placeholder="El. paštas *" required />
+      <input type="text" name="telefonas" placeholder="Telefonas" />
+      <input type="text" name="medziaga" placeholder="Medžiaga *" required />
+      <input type="number" name="kiekis" placeholder="Kiekis *" required />
+      <label>Failo nuoroda (pvz. iš Uploadcare, Dropbox):<br />
+        <input type="url" name="failo_nuoroda" placeholder="Įklijuokite nuorodą į failą" required />
+      </label>
+      <input type="date" name="data" placeholder="Pageidaujama įvykdymo data" />
+      <label><input type="checkbox" name="pristatymas" /> Pageidaujamas pristatymas</label>
+      <textarea name="pastabos" placeholder="Pastabos"></textarea>
+      <button type="submit">Pateikti užklausą</button>
+    </form>
+    <p class="confirmation">Ačiū! Gavome jūsų užklausą. Atsakysime per 24 valandas.</p>
+  </div>
 </body>
 </html>
