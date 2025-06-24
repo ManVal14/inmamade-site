@@ -1,73 +1,115 @@
+
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-    <meta charset="UTF-8">
-    <title>INMAMADE</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #111; color: white; padding: 2em; }
-        header { display: flex; justify-content: space-between; align-items: center; }
-        .lang-switch { font-size: 0.9em; }
-        form { background: #222; padding: 2em; border-radius: 8px; margin-top: 2em; }
-        label { display: block; margin-top: 1em; }
-        input, select, textarea { width: 100%; padding: 0.5em; margin-top: 0.3em; }
-        button { margin-top: 1.5em; padding: 0.7em 2em; background: #007BFF; color: white; border: none; border-radius: 4px; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inmamade</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #111;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      color: #000;
+      padding: 2rem;
+      margin-top: 3rem;
+      border-radius: 8px;
+    }
+    .lang-switch {
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      color: #fff;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    input, textarea, select, button {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    label {
+      font-weight: bold;
+    }
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .checkbox-container input {
+      width: auto;
+      margin-right: 0.5rem;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+  <script>
+    function toggleDelivery() {
+      const deliveryCheckbox = document.getElementById('delivery-required');
+      const addressInput = document.getElementById('delivery-address');
+      addressInput.classList.toggle('hidden', !deliveryCheckbox.checked);
+    }
+  </script>
 </head>
 <body>
-    <header>
-        <h1>INMAMADE</h1>
-        <div class="lang-switch">
-            <a href="#">LT</a> | <a href="#">EN</a>
-        </div>
-    </header>
+  <div class="lang-switch">
+    <a href="#">LT</a> | <a href="#">EN</a>
+  </div>
+  <div class="container">
+    <h1>INMAMADE</h1>
     <h2>Pateikite brėžinius – gaukite pasiūlymą</h2>
-    <p>Užpildykite formą ir gaukite gamybos pasiūlymą jūsų detalėms.</p>
-
+    <p style="text-align: center;">Užpildykite formą ir gaukite gamybos pasiūlymą jūsų detalėms.</p>
     <form>
-        <label>Vardas, pavardė *</label>
-        <input type="text" required>
+      <label>Vardas, pavardė *</label>
+      <input type="text" required />
 
-        <label>Įmonės pavadinimas</label>
-        <input type="text">
+      <label>Įmonės pavadinimas</label>
+      <input type="text" />
 
-        <label>El. paštas *</label>
-        <input type="email" required>
+      <label>El. paštas *</label>
+      <input type="email" required />
 
-        <label>Telefonas</label>
-        <input type="tel">
+      <label>Telefonas</label>
+      <input type="tel" />
 
-        <label>Medžiaga *</label>
-        <select required>
-            <option value="S235">S235</option>
-            <option value="S355">S355</option>
-        </select>
+      <label>Medžiaga *</label>
+      <input type="text" required />
 
-        <label>Kiekis *</label>
-        <input type="number" required>
+      <label>Kiekis *</label>
+      <input type="number" required />
 
-        <label>Brėžinių failų įkėlimas *</label>
-        <input type="file" multiple>
-        <p>* Leidžiami failai: STEP, DXF, PDF, ZIP. Iki 10 failų, max 57MB.</p>
+      <label>Brėžinių failų įkėlimas *</label>
+      <input type="file" />
+      <small>* STEP, DXF, PDF, ZIP – leidžiamas tik vienas failas iki 25MB, siunčiamas tiesiogiai el. paštu</small>
 
-        <label>Pageidaujama išpildymo data</label>
-        <input type="date">
+      <label>Pageidaujama išpildymo data</label>
+      <input type="date" />
 
-        <label><input type="checkbox" id="need_delivery"> Reikia pristatymo</label>
-        <div id="delivery_address_container" style="display:none;">
-            <label>Pristatymo adresas</label>
-            <input type="text">
-        </div>
+      <div class="checkbox-container">
+        <input type="checkbox" id="delivery-required" onclick="toggleDelivery()" />
+        <label for="delivery-required">Pageidaujamas pristatymas</label>
+      </div>
 
-        <label>Pastabos</label>
-        <textarea></textarea>
+      <input type="text" id="delivery-address" class="hidden" placeholder="Pristatymo adresas" />
 
-        <button type="submit">Pateikti užklausą</button>
+      <label>Pastabos</label>
+      <textarea></textarea>
+
+      <button type="submit">Pateikti užklausą</button>
     </form>
-
-    <script>
-        document.getElementById('need_delivery').addEventListener('change', function () {
-            document.getElementById('delivery_address_container').style.display = this.checked ? 'block' : 'none';
-        });
-    </script>
+    <p style="text-align: center;">Ačiū! Gavome jūsų užklausą. Atsakysime per 24 valandas.</p>
+  </div>
 </body>
 </html>
