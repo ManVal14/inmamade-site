@@ -1,32 +1,42 @@
+
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INMAMADE</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>INMAMADE forma</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>INMAMADE</h1>
-        <h2>Pateikite brėžinius – gaukite pasiūlymą</h2>
+    <div class="form-wrapper">
+        <img src="logo.svg" alt="Inmamade logotipas" class="logo" />
+        <h1>Pateikite brėžinius – gaukite pasiūlymą</h1>
         <p>Užpildykite formą ir gaukite gamybos pasiūlymą jūsų detalėms.</p>
         <form action="https://formspree.io/f/mdkzwrnv" method="POST" enctype="multipart/form-data">
-            <label>Vardas, pavardė *<input type="text" name="vardas" required></label>
-            <label>Įmonės pavadinimas<input type="text" name="imone"></label>
-            <label>El. paštas *<input type="email" name="email" required></label>
-            <label>Telefonas<input type="text" name="telefonas"></label>
-            <label>Medžiaga *<input type="text" name="medziaga" required></label>
-            <label>Kiekis *<input type="number" name="kiekis" required></label>
-            <label>Brėžinių failų įkėlimas *<input type="file" name="failas" required></label>
-            <small>* STEP, DXF, PDF, ZIP – leidžiamas tik vienas failas iki 25MB, siunčiamas tiesiogiai el. paštu</small>
-            <label>Pageidaujama išpildymo data<input type="date" name="terminas"></label>
-            <label><input type="checkbox" name="reikia_pristatymo" id="reikia_pristatymo"> Pageidaujamas pristatymas</label>
-            <label>Pristatymo adresas<input type="text" name="pristatymo_adresas"></label>
+            <label>Vardas, pavardė*<input type="text" name="vardas" required /></label>
+            <label>Įmonės pavadinimas<input type="text" name="imone" /></label>
+            <label>El. paštas*<input type="email" name="email" required /></label>
+            <label>Telefonas<input type="tel" name="telefonas" /></label>
+            <label>Medžiaga*<input type="text" name="medziaga" required /></label>
+            <label>Kiekis*<input type="number" name="kiekis" required /></label>
+            <label>Brėžinių failų įkėlimas*
+                <input type="file" name="file" accept=".pdf,.zip,.dxf,.step,.stp" required />
+            </label>
+            <p class="note">* STEP, DXF, PDF, ZIP – leidžiamas tik vienas failas iki 25MB, siunčiamas tiesiogiai el. paštu</p>
+            <label>Pageidaujama išpildymo data<input type="date" name="terminas" /></label>
+            <label><input type="checkbox" id="reikia_pristatymo" /> Pageidaujamas pristatymas</label>
+            <label id="adresas_label" style="display:none;">Pristatymo adresas<input type="text" name="pristatymo_adresas" /></label>
             <label>Pastabos<textarea name="pastabos"></textarea></label>
             <button type="submit">Pateikti užklausą</button>
         </form>
-        <p>Ačiū! Gavome jūsų užklausą. Atsakysime per 24 valandas.</p>
+        <p class="footer">Ačiū! Gavome jūsų užklausą. Atsakysime per 24 valandas.</p>
     </div>
+    <script>
+        const check = document.getElementById("reikia_pristatymo");
+        const address = document.getElementById("adresas_label");
+        check.addEventListener("change", () => {
+            address.style.display = check.checked ? "block" : "none";
+        });
+    </script>
 </body>
 </html>
