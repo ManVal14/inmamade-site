@@ -3,41 +3,105 @@
 <html lang="lt">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inmamade</title>
     <style>
-        body { font-family: sans-serif; background: #1f1f1f; color: #fff; margin: 0; padding: 0; }
-        header, footer { background: #111; padding: 1em; text-align: center; }
-        main { padding: 2em; max-width: 800px; margin: auto; }
-        .cta { background: #4ecdc4; color: #000; padding: 1em; text-align: center; margin-top: 2em; }
-        form { display: flex; flex-direction: column; gap: 1em; margin-top: 2em; }
-        input, textarea { padding: 0.5em; font-size: 1em; }
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .lang-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 20px;
+            background: #1f1f1f;
+            border-radius: 8px;
+        }
+        input, textarea {
+            width: 100%;
+            margin: 5px 0 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #00b894;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Inmamade</h1>
-        <p>Vienas kontaktas. Dešimtys gamyklų. Nulis rūpesčių.</p>
-    </header>
-    <main>
-        <h2>Kaip tai veikia?</h2>
-        <ol>
-            <li>Atsiunčiate brėžinį (.step / .dxf)</li>
-            <li>Pateikiame kainą ir terminą</li>
+    <div class="lang-switcher">
+        <button onclick="switchLang('lt')">LT</button>
+        <button onclick="switchLang('en')">EN</button>
+    </div>
+    <div class="container">
+        <h1 id="title">Inmamade</h1>
+        <p id="subtitle">Vienas kontaktas. Dešimtys gamyklų. Nulis rūpesčių.</p>
+
+        <h2 id="how">Kaip tai veikia?</h2>
+        <ol id="steps">
+            <li>Atsiųskite brėžinį (.step / .dxf)</li>
+            <li>Patiksliname kainą ir terminą</li>
             <li>Pasirūpiname gamyba ir pristatymu</li>
         </ol>
-        <h2>Pateikite užklausą</h2>
+
+        <h3 id="form-title">Pateikite užklausą</h3>
         <form>
-            <label>Prisegti brėžinį: <input type="file" required></label>
-            <label>Kiekis: <input type="number" required></label>
-            <label>Pageidaujamas terminas: <input type="date" required></label>
-            <label>Komentaras: <textarea></textarea></label>
-            <button type="submit">Siųsti</button>
+            <label id="label-drawing">Prisegti brėžinį:</label>
+            <input type="file">
+            <label id="label-qty">Kiekis:</label>
+            <input type="number">
+            <label id="label-date">Pageidaujamas terminas:</label>
+            <input type="date">
+            <label id="label-comment">Komentaras:</label>
+            <textarea rows="4"></textarea>
+            <button type="submit" id="submit-btn">Siųsti</button>
         </form>
-        <div class="cta">Susisiekite: mantas@inmamade.com</div>
-    </main>
-    <footer>
-        &copy; 2025 Inmamade MB
-    </footer>
+        <p>Susisiekite: <a href="mailto:mantas@inmamade.com">mantas@inmamade.com</a></p>
+        <p>© 2025 Inmamade MB</p>
+    </div>
+
+    <script>
+        function switchLang(lang) {
+            if (lang === 'lt') {
+                document.getElementById('title').innerText = 'Inmamade';
+                document.getElementById('subtitle').innerText = 'Vienas kontaktas. Dešimtys gamyklų. Nulis rūpesčių.';
+                document.getElementById('how').innerText = 'Kaip tai veikia?';
+                document.getElementById('steps').innerHTML = '<li>Atsiųskite brėžinį (.step / .dxf)</li><li>Patiksliname kainą ir terminą</li><li>Pasirūpiname gamyba ir pristatymu</li>';
+                document.getElementById('form-title').innerText = 'Pateikite užklausą';
+                document.getElementById('label-drawing').innerText = 'Prisegti brėžinį:';
+                document.getElementById('label-qty').innerText = 'Kiekis:';
+                document.getElementById('label-date').innerText = 'Pageidaujamas terminas:';
+                document.getElementById('label-comment').innerText = 'Komentaras:';
+                document.getElementById('submit-btn').innerText = 'Siųsti';
+            } else {
+                document.getElementById('title').innerText = 'Inmamade';
+                document.getElementById('subtitle').innerText = 'One contact. Dozens of factories. Zero hassle.';
+                document.getElementById('how').innerText = 'How it works?';
+                document.getElementById('steps').innerHTML = '<li>Send a drawing (.step / .dxf)</li><li>We confirm price and delivery time</li><li>We arrange production and shipping</li>';
+                document.getElementById('form-title').innerText = 'Submit your request';
+                document.getElementById('label-drawing').innerText = 'Attach drawing:';
+                document.getElementById('label-qty').innerText = 'Quantity:';
+                document.getElementById('label-date').innerText = 'Desired deadline:';
+                document.getElementById('label-comment').innerText = 'Comment:';
+                document.getElementById('submit-btn').innerText = 'Send';
+            }
+        }
+    </script>
 </body>
 </html>
