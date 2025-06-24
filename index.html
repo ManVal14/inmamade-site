@@ -8,28 +8,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="logo-bg"></div>
-    <div class="form-container">
+    <div class="background-logo"></div>
+    <div class="form-wrapper">
         <img src="logo.png" alt="Inmamade logotipas" class="logo">
         <h1>Pateikite brėžinius – gaukite pasiūlymą</h1>
         <p>Užpildykite formą ir gaukite gamybos pasiūlymą jūsų detalėms.</p>
         <form action="https://formspree.io/f/mdkzwrnv" method="POST" enctype="multipart/form-data">
-            <input type="text" name="vardas" placeholder="Vardas, pavardė*" required>
-            <input type="text" name="imone" placeholder="Įmonės pavadinimas">
-            <input type="email" name="email" placeholder="El. paštas*" required>
-            <input type="text" name="telefonas" placeholder="Telefonas">
-            <input type="text" name="medziaga" placeholder="Medžiaga*" required>
-            <input type="number" name="kiekis" placeholder="Kiekis*" required>
-            <label class="file-label">Brėžinių failų įkėlimas*
-                <input type="file" name="file" required>
-            </label>
-            <p class="file-note">* STEP, DXF, PDF, ZIP – leidžiamas tik vienas failas iki 25MB, siunčiamas tiesiogiai el. paštu</p>
-            <input type="date" name="data" placeholder="Pageidaujama išpildymo data">
-            <label><input type="checkbox" name="pristatymas"> Pageidaujamas pristatymas</label>
-            <input type="text" name="pastabos" placeholder="Pastabos">
-            <button type="submit">Pateikti užklausą</button>
+            <fieldset>
+                <legend>Užklausa dėl detalių gamybos</legend>
+                <input type="text" name="vardas" placeholder="Vardas, pavardė *" required>
+                <input type="text" name="imone" placeholder="Įmonės pavadinimas">
+                <div class="two-columns">
+                    <input type="email" name="email" placeholder="El. paštas *" required>
+                    <input type="text" name="telefonas" placeholder="Telefonas">
+                </div>
+                <div class="two-columns">
+                    <input type="text" name="medziaga" placeholder="Medžiaga *" required>
+                    <input type="number" name="kiekis" placeholder="Kiekis *" required>
+                </div>
+                <label>Brėžinių failų įkėlimas *
+                    <input type="file" name="file" required>
+                </label>
+                <p class="note">* STEP, DXF, PDF, ZIP – leidžiamas tik vienas failas iki 25MB, siunčiamas tiesiogiai el. paštu</p>
+                <input type="date" name="data" placeholder="Pageidaujama išpildymo data">
+                <label><input type="checkbox" name="pristatymas"> Pageidaujamas pristatymas</label>
+                <textarea name="pastabos" placeholder="Pastabos"></textarea>
+                <button type="submit">Pateikti užklausą</button>
+                <p class="confirmation">Ačiū! Gavome jūsų užklausą. Atsakysime per 24 valandas.</p>
+            </fieldset>
         </form>
-        <p class="confirmation">Ačiū! Gavome jūsų užklausą. Atsakysime per 24 valandas.</p>
     </div>
 </body>
 </html>
