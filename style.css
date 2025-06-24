@@ -1,69 +1,63 @@
 
 body {
-    background: #fff;
+    background-color: #fff;
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
+    padding: 0;
 }
-
-.form-wrapper {
-    background: #fff;
-    max-width: 500px;
+.logo-bg {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url('logo-background.png');
+    background-size: 300px;
+    background-repeat: no-repeat;
+    opacity: 0.04;
     width: 100%;
-    padding: 2rem;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    height: 400px;
+    z-index: 0;
+}
+.form-container {
+    position: relative;
+    z-index: 1;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
     border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     text-align: center;
 }
-
 .logo {
-    width: 80px;
-    margin-bottom: 1rem;
+    max-height: 50px;
+    margin-bottom: 20px;
 }
-
-h1 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-p {
-    margin-bottom: 1.5rem;
-    font-size: 0.9rem;
-}
-
-label {
-    display: block;
-    text-align: left;
-    margin-bottom: 1rem;
-}
-
-input, textarea, select {
+input, button {
     width: 100%;
-    padding: 0.5rem;
-    margin-top: 0.25rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
 }
-
 button {
-    background: #0052cc;
+    background-color: #0055cc;
     color: white;
-    padding: 0.75rem;
-    width: 100%;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
 }
-
 button:hover {
-    background: #003f99;
+    background-color: #0040aa;
 }
-
-.note {
-    font-size: 0.8rem;
-    color: #666;
-    margin-top: -1rem;
-    margin-bottom: 1rem;
+.file-label {
+    display: block;
+    margin-top: 15px;
+}
+.file-note {
+    font-size: 0.85em;
+    color: #555;
+}
+.confirmation {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #444;
 }
