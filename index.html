@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inmamade</title>
+    <style>
+        body { font-family: sans-serif; background: #1f1f1f; color: #fff; margin: 0; padding: 0; }
+        header, footer { background: #111; padding: 1em; text-align: center; }
+        main { padding: 2em; max-width: 800px; margin: auto; }
+        .cta { background: #4ecdc4; color: #000; padding: 1em; text-align: center; margin-top: 2em; }
+        form { display: flex; flex-direction: column; gap: 1em; margin-top: 2em; }
+        input, textarea { padding: 0.5em; font-size: 1em; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Inmamade</h1>
+        <p>Vienas kontaktas. Dešimtys gamyklų. Nulis rūpesčių.</p>
+    </header>
+    <main>
+        <h2>Kaip tai veikia?</h2>
+        <ol>
+            <li>Atsiunčiate brėžinį (.step / .dxf)</li>
+            <li>Pateikiame kainą ir terminą</li>
+            <li>Pasirūpiname gamyba ir pristatymu</li>
+        </ol>
+        <h2>Pateikite užklausą</h2>
+        <form>
+            <label>Prisegti brėžinį: <input type="file" required></label>
+            <label>Kiekis: <input type="number" required></label>
+            <label>Pageidaujamas terminas: <input type="date" required></label>
+            <label>Komentaras: <textarea></textarea></label>
+            <button type="submit">Siųsti</button>
+        </form>
+        <div class="cta">Susisiekite: mantas@inmamade.com</div>
+    </main>
+    <footer>
+        &copy; 2025 Inmamade MB
+    </footer>
+</body>
+</html>
