@@ -51,7 +51,7 @@
       <img src="logo.png" alt="Inmamade logotipas" class="logo" />
       <h1>Pateikite brėžinius – gaukite pasiūlymą</h1>
       <p>Užpildykite formą ir gaukite gamybos pasiūlymą jūsų detalėms.</p>
-      <form action="https://formspree.io/f/mdkzwrnv" method="POST" enctype="multipart/form-data">
+      <form onsubmit="handleSubmit(event)">
         <input type="text" name="vardas" placeholder="Vardas, pavardė *" required />
         <input type="text" name="imone" placeholder="Įmonės pavadinimas" />
         <input type="email" name="email" placeholder="El. paštas *" required />
