@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="lt">
 <head>
@@ -23,7 +24,6 @@ Reikalingas pristatymas: ${data.get("pristatymas") ? "Taip" : "Ne"}
 Pastabos: ${data.get("pastabos")}
             `;
 
-            // Google Ads konversijos įvykio fiksavimas
             gtag('event', 'conversion', {
               'send_to': 'AW-17289132596/3cr2AOm__eYdELTOjLIRA',
               'value': 1.0,
@@ -47,7 +47,22 @@ Pastabos: ${data.get("pastabos")}
 <body>
     <div class="logo-bg"></div>
     <div class="form-container">
-        <!-- Tavo forma bus čia -->
+        <form onsubmit="handleSubmit(event)">
+            <input type="text" name="vardas" placeholder="Vardas, pavardė" required />
+            <input type="text" name="imonė" placeholder="Įmonės pavadinimas" />
+            <input type="email" name="email" placeholder="El. paštas" required />
+            <input type="tel" name="telefonas" placeholder="Telefonas" />
+            <input type="text" name="medziaga" placeholder="Medžiaga" />
+            <input type="number" name="kiekis" placeholder="Kiekis" />
+            <input type="url" name="failo_nuoroda" placeholder="Failo nuoroda" />
+            <input type="date" name="data" placeholder="Pageidaujama įvykdymo data" />
+            <label>
+                <input type="checkbox" name="pristatymas" />
+                Reikalingas pristatymas
+            </label>
+            <textarea name="pastabos" placeholder="Pastabos"></textarea>
+            <button type="submit">Siųsti</button>
+        </form>
     </div>
 </body>
 </html>
