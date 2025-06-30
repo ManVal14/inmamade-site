@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="lt">
 <head>
@@ -24,6 +23,7 @@ Reikalingas pristatymas: ${data.get("pristatymas") ? "Taip" : "Ne"}
 Pastabos: ${data.get("pastabos")}
             `;
 
+            // Google Ads konversijos įvykio fiksavimas
             gtag('event', 'conversion', {
               'send_to': 'AW-17289132596/3cr2AOm__eYdELTOjLIRA',
               'value': 1.0,
@@ -40,7 +40,6 @@ Pastabos: ${data.get("pastabos")}
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'AW-17289132596');
     </script>
 </head>
@@ -56,10 +55,7 @@ Pastabos: ${data.get("pastabos")}
             <input type="number" name="kiekis" placeholder="Kiekis" />
             <input type="url" name="failo_nuoroda" placeholder="Failo nuoroda" />
             <input type="date" name="data" placeholder="Pageidaujama įvykdymo data" />
-            <label>
-                <input type="checkbox" name="pristatymas" />
-                Reikalingas pristatymas
-            </label>
+            <label><input type="checkbox" name="pristatymas" /> Reikalingas pristatymas</label>
             <textarea name="pastabos" placeholder="Pastabos"></textarea>
             <button type="submit">Siųsti</button>
         </form>
