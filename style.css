@@ -1,46 +1,45 @@
 
 body {
     background-color: #0d0d0d;
-    color: #fff;
+    color: white;
     font-family: Arial, sans-serif;
+    text-align: center;
     margin: 0;
     padding: 0;
 }
-
 .logo-bg {
-    background-image: url('logo-background.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 300px;
-    opacity: 0.05;
-    z-index: -1;
+    padding: 40px 0 10px 0;
 }
-
+.logo {
+    width: 80px;
+}
+.slogan {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #ccc;
+}
 .form-container {
-    max-width: 600px;
-    margin: 5% auto;
-    padding: 40px;
-    background: #000;
+    background-color: #111;
+    padding: 20px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
 }
-
 input, textarea, button {
     display: block;
     width: 100%;
-    margin-bottom: 15px;
+    margin: 10px 0;
     padding: 10px;
-    border: none;
     border-radius: 5px;
+    border: none;
 }
-
 button {
-    background-color: #005eff;
+    background-color: #007bff;
     color: white;
-    cursor: pointer;
+    font-weight: bold;
+}
+.footer-message {
+    margin-top: 30px;
+    color: #888;
 }
