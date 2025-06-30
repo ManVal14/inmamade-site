@@ -33,7 +33,6 @@ Pastabos: ${data.get("pastabos")}
             window.open(`mailto:mantas@inmamade.com?subject=Užklausa dėl gamybos&body=${encodeURIComponent(message)}`);
         }
     </script>
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17289132596"></script>
     <script>
@@ -48,13 +47,13 @@ Pastabos: ${data.get("pastabos")}
     <div class="form-container">
         <form onsubmit="handleSubmit(event)">
             <input type="text" name="vardas" placeholder="Vardas, pavardė" required />
-            <input type="text" name="imonė" placeholder="Įmonės pavadinimas" />
+            <input type="text" name="imonė" placeholder="Įmonės pavadinimas" required />
             <input type="email" name="email" placeholder="El. paštas" required />
-            <input type="tel" name="telefonas" placeholder="Telefonas" />
-            <input type="text" name="medziaga" placeholder="Medžiaga" />
-            <input type="number" name="kiekis" placeholder="Kiekis" />
-            <input type="url" name="failo_nuoroda" placeholder="Failo nuoroda" />
-            <input type="date" name="data" placeholder="Pageidaujama įvykdymo data" />
+            <input type="tel" name="telefonas" placeholder="Telefonas" required />
+            <input type="text" name="medziaga" placeholder="Medžiaga" required />
+            <input type="number" name="kiekis" placeholder="Kiekis" required />
+            <input type="url" name="failo_nuoroda" placeholder="Failo nuoroda" required />
+            <input type="date" name="data" required />
             <label><input type="checkbox" name="pristatymas" /> Reikalingas pristatymas</label>
             <textarea name="pastabos" placeholder="Pastabos"></textarea>
             <button type="submit">Siųsti</button>

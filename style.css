@@ -1,42 +1,46 @@
+
 body {
-  font-family: sans-serif;
-  background: #111;
-  color: white;
-  padding: 2rem;
+    background-color: #0d0d0d;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
+
 .logo-bg {
-  background-image: url('logo-background.png');
-  opacity: 0.1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-size: cover;
+    background-image: url('logo-background.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 300px;
+    opacity: 0.05;
+    z-index: -1;
 }
+
 .form-container {
-  position: relative;
-  max-width: 600px;
-  margin: 0 auto;
-  background: rgba(0,0,0,0.8);
-  padding: 2rem;
-  border-radius: 12px;
+    max-width: 600px;
+    margin: 5% auto;
+    padding: 40px;
+    background: #000;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
 }
+
 input, textarea, button {
-  width: 100%;
-  margin: 0.5rem 0;
-  padding: 0.75rem;
-  border-radius: 6px;
-  border: none;
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
 }
+
 button {
-  background-color: #0366d6;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-.logo {
-  display: block;
-  max-width: 200px;
-  margin: 0 auto 1rem auto;
+    background-color: #005eff;
+    color: white;
+    cursor: pointer;
 }
