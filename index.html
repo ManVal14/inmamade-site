@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="lt">
 <head>
@@ -5,16 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>INMAMADE forma</title>
     <link rel="stylesheet" href="style.css" />
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17289132596"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'AW-17289132596');
-    </script>
-
     <script>
         function toggleAddress() {
             const checkbox = document.getElementById("pristatymas");
@@ -26,15 +17,16 @@
             event.preventDefault();
             const form = event.target;
             const data = new FormData(form);
+
             const message = `
 Vardas, pavardė: ${data.get("vardas")}
 Įmonės pavadinimas: ${data.get("imone")}
 El. paštas: ${data.get("email")}
 Telefonas: ${data.get("telefonas")}
-Medžiaga: ${data.get("medziaga")}
-Kiekis: ${data.get("kiekis")}
-Failo nuoroda: ${data.get("failo_nuoroda")}
-Pageidaujama įvykdymo data: ${data.get("data")}
+Detalės medžiaga: ${data.get("medziaga")}
+Detalių kiekis: ${data.get("kiekis")}
+Failų nuoroda: ${data.get("failai")}
+Pageidaujama data: ${data.get("data")}
 Reikalingas pristatymas: ${data.get("pristatymas") ? "Taip" : "Ne"}
 Pristatymo adresas: ${data.get("adresas")}
 Pastabos: ${data.get("pastabos")}
@@ -49,33 +41,36 @@ Pastabos: ${data.get("pastabos")}
             window.open(`mailto:mantas@inmamade.com?subject=Užklausa dėl gamybos&body=${encodeURIComponent(message)}`);
         }
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17289132596"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-17289132596');
+    </script>
 </head>
 <body>
-    <div class="logo-bg">
+    <div class="form-wrapper">
         <img src="logo.png" alt="INMAMADE logotipas" class="logo">
         <h1>INMAMADE</h1>
         <p class="slogan">Jūsų patikimas metalo detalių partneris</p>
+        <form onsubmit="handleSubmit(event)">
+            <input type="text" name="vardas" placeholder="Vardas, pavardė" />
+            <input type="text" name="imone" placeholder="Įmonės pavadinimas" />
+            <input type="email" name="email" placeholder="El. paštas" required />
+            <input type="text" name="telefonas" placeholder="Telefonas" />
+            <input type="text" name="medziaga" placeholder="Detalės medžiaga" required />
+            <input type="number" name="kiekis" placeholder="Detalių kiekis" required />
+            <input type="text" name="failai" placeholder="Pridedami failai (nuoroda)" required />
+            <input type="date" name="data" placeholder="Pageidaujama data" />
+            <label><input type="checkbox" id="pristatymas" name="pristatymas" onchange="toggleAddress()"> Reikalingas pristatymas?</label>
+            <div id="adresas-container" style="display:none;">
+                <input type="text" name="adresas" placeholder="Pristatymo adresas" />
+            </div>
+            <textarea name="pastabos" placeholder="Pastabos apie užsakymą"></textarea>
+            <button type="submit">Siųsti</button>
+        </form>
+        <p class="footer-note">Dėkojame už pasitikėjimą. Atsakysime per 24h nuo užsakymo pateikimo</p>
     </div>
-
-    <form class="form-container" onsubmit="handleSubmit(event)">
-        <input type="text" name="vardas" placeholder="Vardas, pavardė" />
-        <input type="text" name="imone" placeholder="Įmonės pavadinimas" />
-        <input type="email" name="email" placeholder="El. paštas" required />
-        <input type="text" name="telefonas" placeholder="Telefonas" />
-        <input type="text" name="medziaga" placeholder="Detalės medžiaga" required />
-        <input type="number" name="kiekis" placeholder="Detalių kiekis" required />
-        <input type="url" name="failo_nuoroda" placeholder="Pridedami failai (nuoroda)" required />
-        <input type="date" name="data" placeholder="Pageidaujama pagaminimo data" />
-        
-        <label><input type="checkbox" name="pristatymas" id="pristatymas" onchange="toggleAddress()"> Reikalingas pristatymas?</label>
-        <div id="adresas-container" style="display:none;">
-            <input type="text" name="adresas" placeholder="Pristatymo adresas" />
-        </div>
-
-        <textarea name="pastabos" placeholder="Pastabos apie užsakymą"></textarea>
-        <button type="submit">Siųsti</button>
-    </form>
-
-    <p class="footer-message">Dėkojame už pasitikėjimą. Atsakysime per 24h nuo užsakymo pateikimo</p>
 </body>
 </html>
